@@ -44,7 +44,6 @@
   .obrigacao-item::before { content: "\2713"; color: var(--verde); font-weight: bold; margin-right: 12px; font-size: 1.2em; }
   .alerta { background: #ffebee; border-left: 4px solid var(--vermelho); padding: 16px; border-radius: 8px; margin: 16px 0; }
   .alerta strong { color: var(--vermelho); }
-  /* FAQ */
   .faq-filtros { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
   .faq-filtro { padding: 6px 14px; border: 2px solid var(--borda); background: white; border-radius: 20px; cursor: pointer; font-size: 0.88em; transition: all 0.2s; }
   .faq-filtro:hover { border-color: var(--azul); }
@@ -61,7 +60,6 @@
   .faq-resposta { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 20px; font-size: 0.95em; }
   .faq-item.aberto .faq-resposta { max-height: 800px; padding: 0 20px 18px; }
   .faq-resposta .base { margin-top: 10px; padding: 8px 12px; background: var(--azul-claro); border-left: 3px solid var(--azul); border-radius: 4px; font-size: 0.85em; color: var(--cinza-escuro); }
-  /* Quiz */
   .quiz-progresso { height: 8px; background: var(--borda); border-radius: 4px; overflow: hidden; margin-bottom: 20px; }
   .quiz-progresso div { height: 100%; background: linear-gradient(90deg, var(--azul), var(--verde)); width: 0%; transition: width 0.3s; }
   .quiz-pergunta { font-size: 1.1em; font-weight: 500; margin-bottom: 14px; }
@@ -79,7 +77,6 @@
   .btn:disabled { background: #b0bec5; cursor: not-allowed; }
   .resultado-quiz { text-align: center; padding: 20px; }
   .resultado-quiz .pontos { font-size: 3em; color: var(--azul); font-weight: bold; }
-  /* Checklist */
   .checklist-item { display: flex; align-items: flex-start; padding: 14px; background: var(--cinza); border-radius: 8px; margin-bottom: 8px; cursor: pointer; transition: background 0.2s; }
   .checklist-item:hover { background: var(--azul-claro); }
   .checklist-item input[type="checkbox"] { margin-right: 14px; margin-top: 4px; width: 20px; height: 20px; accent-color: var(--azul); cursor: pointer; }
@@ -88,7 +85,6 @@
   .checklist-resumo { background: var(--azul-escuro); color: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; text-align: center; }
   .checklist-resumo .barra { height: 10px; background: rgba(255,255,255,0.25); border-radius: 5px; overflow: hidden; margin-top: 10px; }
   .checklist-resumo .barra div { height: 100%; background: #81d4fa; transition: width 0.3s; }
-  /* Chat IA */
   .chat-container { display: flex; flex-direction: column; height: 520px; border: 1px solid var(--borda); border-radius: 12px; overflow: hidden; background: var(--cinza); }
   .chat-mensagens { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
   .chat-msg { max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 0.95em; line-height: 1.5; word-wrap: break-word; }
@@ -110,7 +106,6 @@
   .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
   .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
   @keyframes bounce { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
-  /* Footer */
   footer { background: var(--azul-escuro); color: white; padding: 30px 20px; text-align: center; font-size: 0.9em; }
   footer p { margin-bottom: 8px; opacity: 0.9; }
   @media print { nav, header .lei-tag, .btn, footer, #chat { display: none; } section { box-shadow: none; page-break-inside: avoid; } body { background: white; } }
@@ -121,18 +116,18 @@
 
 <header>
   <h1>Estatuto dos Direitos do Paciente</h1>
-  <p class="subtitulo">Guia educativo sobre as responsabilidades de hospitais, clinicas e servicos de saude</p>
-  <span class="lei-tag">Lei n. 15.378, de 6 de abril de 2026</span>
+  <p class="subtitulo">Guia educativo sobre as responsabilidades de hospitais, clínicas e serviços de saúde</p>
+  <span class="lei-tag">Lei nº 15.378, de 6 de abril de 2026</span>
 </header>
 
 <nav>
   <ul>
-    <li><a href="#apresentacao">Apresentacao</a></li>
+    <li><a href="#apresentacao">Apresentação</a></li>
     <li><a href="#direitos">Direitos</a></li>
-    <li><a href="#obrigacoes">Obrigacoes</a></li>
+    <li><a href="#obrigacoes">Obrigações</a></li>
     <li><a href="#penalidades">Penalidades</a></li>
     <li><a href="#deveres">Deveres</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#faq">FAQ &amp; Polêmicas</a></li>
     <li><a href="#quiz">Quiz</a></li>
     <li><a href="#checklist">Checklist</a></li>
     <li><a href="#chat">Consultor IA</a></li>
@@ -143,14 +138,14 @@
 
 <section id="apresentacao">
   <h2>Sobre o Estatuto</h2>
-  <p>A <strong>Lei n. 15.378, sancionada em 6 de abril de 2026</strong>, institui o <strong>Estatuto dos Direitos do Paciente</strong> no Brasil. Trata-se do primeiro marco legal unificado que consolida, em um unico texto, os direitos e as responsabilidades das pessoas sob cuidados de saude.</p>
+  <p>A <strong>Lei nº 15.378, sancionada em 6 de abril de 2026</strong>, institui o <strong>Estatuto dos Direitos do Paciente</strong> no Brasil. Trata-se do primeiro marco legal unificado que consolida, em um único texto, os direitos e as responsabilidades das pessoas sob cuidados de saúde.</p>
   <h3>A quem se aplica</h3>
-  <p>O Estatuto vincula todos os servicos de saude, <strong>sem excecao</strong>:</p>
+  <p>O Estatuto vincula todos os serviços de saúde, <strong>sem exceção</strong>:</p>
   <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
-    <div class="card" style="cursor:default"><div class="icone">&#127973;</div><h4>Hospitais</h4><p>Publicos e privados</p></div>
-    <div class="card" style="cursor:default"><div class="icone">&#129658;</div><h4>Clinicas e Consultorios</h4><p>De qualquer especialidade</p></div>
-    <div class="card" style="cursor:default"><div class="icone">&#129514;</div><h4>Laboratorios</h4><p>E ambulatorios</p></div>
-    <div class="card" style="cursor:default"><div class="icone">&#128203;</div><h4>Operadoras</h4><p>De planos de saude</p></div>
+    <div class="card" style="cursor:default"><div class="icone">&#127973;</div><h4>Hospitais</h4><p>Públicos e privados</p></div>
+    <div class="card" style="cursor:default"><div class="icone">&#129658;</div><h4>Clínicas e Consultórios</h4><p>De qualquer especialidade</p></div>
+    <div class="card" style="cursor:default"><div class="icone">&#129514;</div><h4>Laboratórios</h4><p>E ambulatórios</p></div>
+    <div class="card" style="cursor:default"><div class="icone">&#128203;</div><h4>Operadoras</h4><p>De planos de saúde</p></div>
   </div>
 </section>
 
@@ -161,49 +156,49 @@
 </section>
 
 <section id="obrigacoes">
-  <h2>Obrigacoes do Hospital</h2>
+  <h2>Obrigações do Hospital</h2>
   <p>Com base na Lei 15.378/2026, o hospital deve:</p>
   <div id="lista-obrigacoes"></div>
 </section>
 
 <section id="penalidades">
-  <h2>Consequencias do Descumprimento</h2>
+  <h2>Consequências do Descumprimento</h2>
   <div class="alerta">
-    <strong>Atencao:</strong> a violacao aos direitos previstos no Estatuto e qualificada como situacao contraria aos <strong>direitos humanos</strong>, nos termos da Lei n. 12.986/2014.
+    <strong>Atenção:</strong> a violação aos direitos previstos no Estatuto é qualificada como situação contrária aos <strong>direitos humanos</strong>, nos termos da Lei nº 12.986/2014.
   </div>
-  <h3>Possiveis consequencias</h3>
+  <h3>Possíveis consequências</h3>
   <div id="lista-penalidades"></div>
 </section>
 
 <section id="deveres">
   <h2>Deveres do Paciente</h2>
-  <p>O Estatuto tambem estabelece responsabilidades dos pacientes — e importante que a equipe hospitalar conheca para orientar adequadamente:</p>
+  <p>O Estatuto também estabelece responsabilidades dos pacientes — é importante que a equipe hospitalar conheça para orientar adequadamente:</p>
   <div id="lista-deveres"></div>
 </section>
 
 <section id="faq">
-  <h2>Perguntas Frequentes e Polemicas</h2>
-  <p>Duvidas reais do dia a dia hospitalar sobre a Lei 15.378/2026 — incluindo os pontos mais controversos.</p>
+  <h2>Perguntas Frequentes &amp; Polêmicas</h2>
+  <p>Dúvidas reais do dia a dia hospitalar sobre a Lei 15.378/2026 — incluindo os pontos mais controversos.</p>
   <div class="faq-filtros">
     <button class="faq-filtro ativo" data-filtro="todas">Todas</button>
     <button class="faq-filtro" data-filtro="frequente">Frequentes</button>
-    <button class="faq-filtro" data-filtro="polemica">Polemicas</button>
+    <button class="faq-filtro" data-filtro="polemica">Polêmicas</button>
   </div>
   <div id="lista-faq"></div>
 </section>
 
 <section id="quiz">
   <h2>Quiz: Teste seu Conhecimento</h2>
-  <p>Responda as perguntas a seguir sobre as responsabilidades do hospital perante a Lei 15.378/2026.</p>
+  <p>Responda às perguntas a seguir sobre as responsabilidades do hospital perante a Lei 15.378/2026.</p>
   <div class="quiz-progresso"><div id="barra-progresso"></div></div>
   <div id="quiz-container"></div>
 </section>
 
 <section id="checklist">
   <h2>Checklist de Conformidade</h2>
-  <p>Use este checklist para verificar se seu hospital esta em conformidade com o Estatuto. Seu progresso e salvo automaticamente.</p>
+  <p>Use este checklist para verificar se seu hospital está em conformidade com o Estatuto. Seu progresso é salvo automaticamente.</p>
   <div class="checklist-resumo">
-    <div><span id="check-texto">0 de 0 itens concluidos</span> — <strong id="check-porcentagem">0%</strong></div>
+    <div><span id="check-texto">0 de 0 itens concluídos</span> — <strong id="check-porcentagem">0%</strong></div>
     <div class="barra"><div id="check-barra"></div></div>
   </div>
   <div id="lista-checklist"></div>
@@ -212,20 +207,20 @@
 </section>
 
 <section id="chat">
-  <h2>Consultor IA — Analise de Conformidade</h2>
-  <p>Descreva uma situacao real do seu hospital e a IA vai analisar se voce esta cumprindo o espirito da Lei 15.378/2026, com orientacoes praticas.</p>
+  <h2>Consultor IA — Análise de Conformidade</h2>
+  <p>Descreva uma situação real do seu hospital e a IA vai analisar se você está cumprindo o espírito da Lei 15.378/2026, com orientações práticas.</p>
   <div class="chat-sugestoes" id="chat-sugestoes">
     <span class="chat-sugestao">Paciente quer filmar o atendimento na UTI</span>
-    <span class="chat-sugestao">Familia pede para nao contar diagnostico</span>
-    <span class="chat-sugestao">Acompanhante recusa sair do centro cirurgico</span>
-    <span class="chat-sugestao">Paciente quer copia do prontuario de urgencia</span>
+    <span class="chat-sugestao">Família pede para não contar o diagnóstico</span>
+    <span class="chat-sugestao">Acompanhante recusa sair do centro cirúrgico</span>
+    <span class="chat-sugestao">Paciente quer cópia do prontuário de urgência</span>
   </div>
   <div class="chat-container">
     <div class="chat-mensagens" id="chat-mensagens">
-      <div class="chat-msg sistema">Consultor juridico virtual especializado na Lei 15.378/2026. Descreva a situacao vivenciada no seu hospital.</div>
+      <div class="chat-msg sistema">Consultor jurídico virtual especializado na Lei 15.378/2026. Descreva a situação vivenciada no seu hospital.</div>
     </div>
     <div class="chat-input-area">
-      <textarea id="chat-input" placeholder="Descreva a situacao..." rows="1"></textarea>
+      <textarea id="chat-input" placeholder="Descreva a situação..." rows="1"></textarea>
       <button id="chat-enviar" onclick="enviarMensagem()">&#10148;</button>
     </div>
   </div>
@@ -234,104 +229,104 @@
 </main>
 
 <footer>
-  <p><strong>Lei n. 15.378, de 6 de abril de 2026 — Estatuto dos Direitos do Paciente</strong></p>
-  <p>Este material e informativo e educativo, e nao substitui orientacao juridica especializada.</p>
-  <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.7;">Desenvolvido para capacitacao de equipes hospitalares</p>
+  <p><strong>Lei nº 15.378, de 6 de abril de 2026 — Estatuto dos Direitos do Paciente</strong></p>
+  <p>Este material é informativo e educativo, e não substitui orientação jurídica especializada.</p>
+  <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.7;">Desenvolvido para capacitação de equipes hospitalares</p>
 </footer>
 
 <script>
 // ============ DADOS ============
 const direitos = [
-  { icone: "&#9201;", titulo: "Cuidados de qualidade no tempo oportuno", detalhe: "O paciente tem direito a cuidados em saude de qualidade, no tempo adequado, em instalacoes fisicas limpas e adequadas, atendido por profissionais formados e capacitados.", artigo: "Art. 4" },
-  { icone: "&#128101;", titulo: "Acompanhante em consultas e internacoes", detalhe: "O paciente tem direito a acompanhante em consultas e internacoes, salvo quando o profissional responsavel avaliar que a presenca pode causar prejuizo a saude, intimidade ou seguranca. O acompanhante pode fazer perguntas sobre a seguranca do paciente.", artigo: "Art. 6" },
-  { icone: "&#128196;", titulo: "Acesso ao prontuario", detalhe: "Acesso ao prontuario a qualquer momento, sem necessidade de justificativa, com direito a copia gratuita, retificacao e exigencia de guarda segura.", artigo: "Art. 7" },
-  { icone: "&#129489;&#8205;&#9878;&#65039;", titulo: "Indicacao de representante", detalhe: "O paciente pode indicar livremente um representante em qualquer momento dos cuidados em saude, mediante registro no prontuario.", artigo: "Art. 8" },
-  { icone: "&#128737;&#65039;", titulo: "Seguranca assistencial", detalhe: "Direito a ambiente, procedimentos e insumos seguros. O paciente pode perguntar sobre higienizacao das maos, local correto do procedimento cirurgico e identificacao do medico responsavel.", artigo: "Art. 9" },
-  { icone: "&#9997;&#65039;", titulo: "Consentimento informado", detalhe: "Manifestacao de vontade livre de coercao, apos receber informacao clara e detalhada sobre diagnostico, prognostico, tratamento e cuidados. O consentimento pode ser retirado a qualquer tempo sem represalias.", artigo: "Art. 10" },
-  { icone: "&#128274;", titulo: "Confidencialidade", detalhe: "Direito a confidencialidade das informacoes sobre saude e dados pessoais, inclusive apos a morte, salvo excecoes legais. Dados e registros devem ser manuseados e arquivados preservando o sigilo.", artigo: "Art. 11" },
-  { icone: "&#10067;", titulo: "Direito de perguntar", detalhe: "O paciente tem direito de realizar perguntas aos profissionais sobre higienizacao, procedimentos, identificacao do responsavel e contato.", artigo: "Art. 9, par.1" }
+  { icone: "&#9201;", titulo: "Cuidados de qualidade no tempo oportuno", detalhe: "O paciente tem direito a cuidados em saúde de qualidade, no tempo adequado, em instalações físicas limpas e adequadas, atendido por profissionais formados e capacitados.", artigo: "Art. 4º" },
+  { icone: "&#128101;", titulo: "Acompanhante em consultas e internações", detalhe: "O paciente tem direito a acompanhante em consultas e internações, salvo quando o profissional responsável avaliar que a presença pode causar prejuízo à saúde, intimidade ou segurança. O acompanhante pode fazer perguntas sobre a segurança do paciente.", artigo: "Art. 6º" },
+  { icone: "&#128196;", titulo: "Acesso ao prontuário", detalhe: "Acesso ao prontuário a qualquer momento, sem necessidade de justificativa, com direito a cópia gratuita, retificação e exigência de guarda segura.", artigo: "Art. 7º" },
+  { icone: "&#129489;&#8205;&#9878;&#65039;", titulo: "Indicação de representante", detalhe: "O paciente pode indicar livremente um representante em qualquer momento dos cuidados em saúde, mediante registro no prontuário.", artigo: "Art. 8º" },
+  { icone: "&#128737;&#65039;", titulo: "Segurança assistencial", detalhe: "Direito a ambiente, procedimentos e insumos seguros. O paciente pode perguntar sobre higienização das mãos, local correto do procedimento cirúrgico e identificação do médico responsável.", artigo: "Art. 9º" },
+  { icone: "&#9997;&#65039;", titulo: "Consentimento informado", detalhe: "Manifestação de vontade livre de coerção, após receber informação clara e detalhada sobre diagnóstico, prognóstico, tratamento e cuidados. O consentimento pode ser retirado a qualquer tempo sem represálias.", artigo: "Art. 10" },
+  { icone: "&#128274;", titulo: "Confidencialidade", detalhe: "Direito à confidencialidade das informações sobre saúde e dados pessoais, inclusive após a morte, salvo exceções legais. Dados e registros devem ser manuseados e arquivados preservando o sigilo.", artigo: "Art. 11" },
+  { icone: "&#10067;", titulo: "Direito de perguntar", detalhe: "O paciente tem direito de realizar perguntas aos profissionais sobre higienização, procedimentos, identificação do responsável e forma de contatá-lo.", artigo: "Art. 9º, §1º" }
 ];
 
 const obrigacoes = [
   "Garantir efetivamente todos os direitos previstos no Estatuto dos Direitos do Paciente",
-  "Manter instalacoes fisicas limpas, seguras e adequadas ao atendimento",
+  "Manter instalações físicas limpas, seguras e adequadas ao atendimento",
   "Contar com profissionais devidamente formados, capacitados e atualizados",
-  "Disponibilizar o prontuario ao paciente sem exigir justificativa, gratuitamente",
+  "Disponibilizar o prontuário ao paciente sem exigir justificativa, gratuitamente",
   "Assegurar a confidencialidade e a guarda segura dos dados e registros dos pacientes",
-  "Permitir a presenca de acompanhante nos termos da lei",
+  "Permitir a presença de acompanhante nos termos da lei",
   "Documentar adequadamente o consentimento informado para procedimentos",
-  "Disponibilizar canais efetivos de reclamacao para pacientes e familiares",
-  "Cooperar com as pesquisas bienais sobre qualidade dos servicos exigidas pelo poder publico",
+  "Disponibilizar canais efetivos de reclamação para pacientes e familiares",
+  "Cooperar com as pesquisas bienais sobre qualidade dos serviços exigidas pelo poder público",
   "Divulgar ampla e periodicamente os direitos e deveres dos pacientes nas unidades",
-  "Adotar protocolos de seguranca assistencial (higienizacao, identificacao correta, verificacao)",
-  "Capacitar continuamente a equipe sobre as disposicoes do Estatuto"
+  "Adotar protocolos de segurança assistencial (higienização, identificação correta, verificação)",
+  "Capacitar continuamente a equipe sobre as disposições do Estatuto"
 ];
 
 const penalidades = [
-  "Caracterizacao como violacao a direitos humanos (Lei n. 12.986/2014)",
-  "Responsabilizacao civel (indenizacoes por danos materiais e morais)",
-  "Responsabilizacao administrativa perante orgaos reguladores (ANS, vigilancia sanitaria, conselhos profissionais)",
-  "Possibilidade de denuncias ao Conselho de Defesa dos Direitos da Pessoa Humana",
+  "Caracterização como violação a direitos humanos (Lei nº 12.986/2014)",
+  "Responsabilização cível (indenizações por danos materiais e morais)",
+  "Responsabilização administrativa perante órgãos reguladores (ANS, vigilância sanitária, conselhos profissionais)",
+  "Possibilidade de denúncias ao Conselho de Defesa dos Direitos da Pessoa Humana",
   "Risco reputacional e de imagem institucional",
-  "Descredenciamento de redes e planos de saude",
-  "Possiveis sancoes criminais aos profissionais envolvidos, quando aplicavel"
+  "Descredenciamento de redes e planos de saúde",
+  "Possíveis sanções criminais aos profissionais envolvidos, quando aplicável"
 ];
 
 const deveres = [
-  "Seguir as orientacoes do profissional de saude quanto ao medicamento prescrito e tratamento",
-  "Realizar perguntas e solicitar informacoes sempre que necessario",
-  "Assegurar que a instituicao tenha copia de suas diretivas antecipadas de vontade, quando houver",
+  "Seguir as orientações do profissional de saúde quanto ao medicamento prescrito e ao tratamento",
+  "Realizar perguntas e solicitar informações sempre que necessário",
+  "Assegurar que a instituição tenha cópia de suas diretivas antecipadas de vontade, quando houver",
   "Indicar seu representante, se desejar",
-  "Informar sobre eventual desistencia do tratamento",
-  "Cumprir as regras e normas dos servicos de saude",
-  "Respeitar os direitos de outros pacientes e dos profissionais de saude"
+  "Informar sobre eventual desistência do tratamento",
+  "Cumprir as regras e normas dos serviços de saúde",
+  "Respeitar os direitos de outros pacientes e dos profissionais de saúde"
 ];
 
 const faqItens = [
-  { tipo: "frequente", pergunta: "Um paciente exige copia integral do prontuario. Posso cobrar pela reproducao?", resposta: "<strong>Nao.</strong> O Estatuto garante copia gratuita, sem onus ao paciente, e independentemente de justificativa. Cobrar taxa de reproducao configura violacao ao direito.", base: "Art. 7 da Lei 15.378/2026" },
-  { tipo: "polemica", pergunta: "E se o paciente quiser remover anotacoes do prontuario que considera ofensivas?", resposta: "O paciente pode <strong>solicitar retificacao</strong>, mas o prontuario e documento medico-legal. A correcao deve seguir protocolo: o profissional nao apaga o registro original, mas acrescenta nota explicativa com data e assinatura. Se houver recusa justificada da equipe, o paciente pode recorrer aos orgaos reguladores.", base: "Art. 7 — direito a retificacao" },
-  { tipo: "frequente", pergunta: "Posso recusar acompanhante em UTI ou centro cirurgico?", resposta: "Somente quando o profissional responsavel avaliar, de forma tecnica e documentada, que a presenca causa <strong>prejuizo a saude, intimidade ou seguranca</strong> do paciente ou de terceiros. A negativa generica (\"regra da UTI\") nao e mais suficiente — precisa de justificativa registrada em prontuario.", base: "Art. 6" },
-  { tipo: "polemica", pergunta: "O paciente se recusa a tratamento que salvaria sua vida. O que fazer?", resposta: "O consentimento e livre e pode ser retirado a qualquer tempo, <strong>mesmo com risco a vida</strong>, desde que o paciente esteja consciente e capaz. A equipe deve: (1) informar detalhadamente as consequencias, (2) documentar a recusa em termo especifico, (3) respeitar a autonomia. Em emergencia com paciente inconsciente, o consentimento e presumido.", base: "Art. 10 — consentimento informado e retirada" },
-  { tipo: "polemica", pergunta: "Familiares pedem para ocultar diagnostico grave do paciente (\"conspiracao do silencio\"). Posso atender?", resposta: "<strong>Nao.</strong> A titularidade da informacao e do paciente, nao da familia. Omitir diagnostico viola o direito a informacao e ao consentimento informado. A equipe pode acolher a preocupacao familiar, mas deve sempre garantir o acesso do paciente a verdade sobre sua condicao, de forma humanizada.", base: "Art. 10 + Art. 11" },
-  { tipo: "frequente", pergunta: "Um familiar liga pedindo informacoes sobre o paciente. Posso repassar?", resposta: "Apenas se o paciente <strong>consentiu previamente</strong> com a revelacao de informacoes a terceiros (incluindo familiares), preferencialmente por escrito ou registrado no prontuario. Sem consentimento, a informacao e confidencial — mesmo para conjuge, pais ou filhos, salvo excecoes legais.", base: "Art. 11 — confidencialidade" },
-  { tipo: "polemica", pergunta: "Paciente menor de idade pode recusar tratamento indicado pelos pais?", resposta: "Questao sensivel. O Estatuto nao revoga regras do ECA ou do Codigo Civil sobre capacidade civil. A orientacao pratica: <strong>avaliar a capacidade de discernimento</strong> (adolescente maduro pode ter sua autonomia considerada em procedimentos reversiveis), envolver equipe multiprofissional e, em conflito grave com os pais, acionar o Ministerio Publico ou Vara da Infancia.", base: "Art. 10 c/c legislacao especifica" },
-  { tipo: "frequente", pergunta: "Preciso manter cartaz com os direitos do paciente exposto?", resposta: "Sim. Cabe ao poder publico assegurar a <strong>divulgacao ampla e periodica</strong> dos direitos, e os hospitais devem cooperar. A pratica recomendada e afixar cartazes visiveis nas recepcoes, enfermarias e salas de espera, alem de disponibilizar material impresso.", base: "Mecanismos de cumprimento — divulgacao" },
-  { tipo: "polemica", pergunta: "Testemunha de Jeova recusa transfusao. Como proceder?", resposta: "Adulto capaz pode recusar transfusao, mesmo com risco de morte — e exercicio legitimo do consentimento informado e da liberdade religiosa. A equipe deve: documentar exaustivamente, oferecer alternativas terapeuticas, respeitar a decisao. <strong>Em menores ou incapazes</strong>, prevalece o dever de protecao a vida e deve-se acionar o Judiciario quando houver tempo, ou agir em emergencia.", base: "Art. 10 + jurisprudencia STF" },
-  { tipo: "frequente", pergunta: "O paciente quer gravar a consulta. E permitido?", resposta: "O Estatuto nao trata expressamente do tema, mas a gravacao pela propria pessoa envolvida na conversa e juridicamente valida no Brasil. Recomenda-se: <strong>nao proibir</strong>, registrar a gravacao no prontuario, e assegurar que informacoes de terceiros nao sejam divulgadas.", base: "Interpretacao sistematica — direito a informacao" },
-  { tipo: "polemica", pergunta: "O Estatuto obriga o hospital a atender mesmo sem vaga ou sem pagamento?", resposta: "O Estatuto <strong>nao cria</strong> direito a atendimento gratuito onde ele nao existia. Mas reforca que, uma vez iniciado o atendimento (inclusive em emergencia), o paciente tem direito a cuidados de qualidade. Recusa de atendimento emergencial por questao financeira pode configurar, alem de violacao ao Estatuto, crime de omissao de socorro.", base: "Art. 4 + CP art. 135" },
-  { tipo: "frequente", pergunta: "Como documentar o consentimento informado corretamente?", resposta: "Termo escrito, em linguagem <strong>clara e acessivel</strong> (nao pode ser apenas jargao medico), detalhando: diagnostico, prognostico, procedimento proposto, riscos, beneficios, alternativas e o que acontece se o paciente recusar. Deve ser assinado apos tempo razoavel para leitura e duvidas. Anexar copia ao prontuario.", base: "Art. 10" },
-  { tipo: "polemica", pergunta: "Paciente agressivo pode ser contido? Isso viola a lei?", resposta: "A contencao fisica ou quimica e <strong>medida excepcional</strong>, admitida apenas quando ha risco iminente ao proprio paciente ou a terceiros, por tempo minimo necessario, com prescricao medica, monitorizacao e registro detalhado. Contencao como punicao ou rotina viola o Estatuto e pode caracterizar tortura.", base: "Art. 9 + legislacao de saude mental" },
-  { tipo: "frequente", pergunta: "Quem fiscaliza o cumprimento do Estatuto?", resposta: "O <strong>poder publico</strong> (Ministerio da Saude, vigilancias sanitarias, ANS para planos de saude), somado aos conselhos profissionais, Ministerio Publico, Defensorias, Procons e ao Conselho de Defesa dos Direitos da Pessoa Humana. Pacientes tambem podem buscar diretamente a via judicial.", base: "Mecanismos de cumprimento" },
-  { tipo: "polemica", pergunta: "Diretivas antecipadas de vontade obrigam o hospital?", resposta: "Sim, desde que compativeis com a lei e com a etica medica. O hospital deve <strong>guardar copia</strong> quando apresentadas e respeitar a vontade do paciente sobre tratamentos em caso de incapacidade futura. Ignorar diretivas validas expoe a instituicao a responsabilizacao.", base: "Deveres do paciente + Art. 10" }
+  { tipo: "frequente", pergunta: "Um paciente exige cópia integral do prontuário. Posso cobrar pela reprodução?", resposta: "<strong>Não.</strong> O Estatuto garante cópia gratuita, sem ônus ao paciente, independentemente de justificativa. Cobrar taxa de reprodução configura violação ao direito.", base: "Art. 7º da Lei 15.378/2026" },
+  { tipo: "polemica", pergunta: "E se o paciente quiser remover anotações do prontuário que considera ofensivas?", resposta: "O paciente pode <strong>solicitar retificação</strong>, mas o prontuário é documento médico-legal. A correção deve seguir protocolo: o profissional não apaga o registro original, mas acrescenta nota explicativa com data e assinatura. Se houver recusa justificada da equipe, o paciente pode recorrer aos órgãos reguladores.", base: "Art. 7º — direito à retificação" },
+  { tipo: "frequente", pergunta: "Posso recusar acompanhante em UTI ou centro cirúrgico?", resposta: "Somente quando o profissional responsável avaliar, de forma técnica e documentada, que a presença causa <strong>prejuízo à saúde, intimidade ou segurança</strong> do paciente ou de terceiros. A negativa genérica (\\\"regra da UTI\\\") não é mais suficiente — precisa de justificativa registrada em prontuário.", base: "Art. 6º" },
+  { tipo: "polemica", pergunta: "O paciente se recusa a tratamento que salvaria sua vida. O que fazer?", resposta: "O consentimento é livre e pode ser retirado a qualquer tempo, <strong>mesmo com risco à vida</strong>, desde que o paciente esteja consciente e capaz. A equipe deve: (1) informar detalhadamente as consequências, (2) documentar a recusa em termo específico, (3) respeitar a autonomia. Em emergência com paciente inconsciente, o consentimento é presumido.", base: "Art. 10 — consentimento informado e retirada" },
+  { tipo: "polemica", pergunta: "Familiares pedem para ocultar diagnóstico grave do paciente (\\\"conspiração do silêncio\\\"). Posso atender?", resposta: "<strong>Não.</strong> A titularidade da informação é do paciente, não da família. Omitir diagnóstico viola o direito à informação e ao consentimento informado. A equipe pode acolher a preocupação familiar, mas deve sempre garantir o acesso do paciente à verdade sobre sua condição, de forma humanizada.", base: "Art. 10 + Art. 11" },
+  { tipo: "frequente", pergunta: "Um familiar liga pedindo informações sobre o paciente. Posso repassar?", resposta: "Apenas se o paciente <strong>consentiu previamente</strong> com a revelação de informações a terceiros (incluindo familiares), preferencialmente por escrito ou registrado no prontuário. Sem consentimento, a informação é confidencial — mesmo para cônjuge, pais ou filhos, salvo exceções legais.", base: "Art. 11 — confidencialidade" },
+  { tipo: "polemica", pergunta: "Paciente menor de idade pode recusar tratamento indicado pelos pais?", resposta: "Questão sensível. O Estatuto não revoga regras do ECA ou do Código Civil sobre capacidade civil. A orientação prática: <strong>avaliar a capacidade de discernimento</strong> (adolescente maduro pode ter sua autonomia considerada em procedimentos reversíveis), envolver equipe multiprofissional e, em conflito grave com os pais, acionar o Ministério Público ou Vara da Infância.", base: "Art. 10 c/c legislação específica" },
+  { tipo: "frequente", pergunta: "Preciso manter cartaz com os direitos do paciente exposto?", resposta: "Sim. Cabe ao poder público assegurar a <strong>divulgação ampla e periódica</strong> dos direitos, e os hospitais devem cooperar. A prática recomendada é afixar cartazes visíveis nas recepções, enfermarias e salas de espera, além de disponibilizar material impresso.", base: "Mecanismos de cumprimento — divulgação" },
+  { tipo: "polemica", pergunta: "Testemunha de Jeová recusa transfusão. Como proceder?", resposta: "Adulto capaz pode recusar transfusão, mesmo com risco de morte — é exercício legítimo do consentimento informado e da liberdade religiosa. A equipe deve: documentar exaustivamente, oferecer alternativas terapêuticas, respeitar a decisão. <strong>Em menores ou incapazes</strong>, prevalece o dever de proteção à vida e deve-se acionar o Judiciário quando houver tempo, ou agir em emergência.", base: "Art. 10 + jurisprudência STF" },
+  { tipo: "frequente", pergunta: "O paciente quer gravar a consulta. É permitido?", resposta: "O Estatuto não trata expressamente do tema, mas a gravação pela própria pessoa envolvida na conversa é juridicamente válida no Brasil. Recomenda-se: <strong>não proibir</strong>, registrar a gravação no prontuário, e assegurar que informações de terceiros não sejam divulgadas.", base: "Interpretação sistemática — direito à informação" },
+  { tipo: "polemica", pergunta: "O Estatuto obriga o hospital a atender mesmo sem vaga ou sem pagamento?", resposta: "O Estatuto <strong>não cria</strong> direito a atendimento gratuito onde ele não existia. Mas reforça que, uma vez iniciado o atendimento (inclusive em emergência), o paciente tem direito a cuidados de qualidade. Recusa de atendimento emergencial por questão financeira pode configurar, além de violação ao Estatuto, crime de omissão de socorro.", base: "Art. 4º + CP art. 135" },
+  { tipo: "frequente", pergunta: "Como documentar o consentimento informado corretamente?", resposta: "Termo escrito, em linguagem <strong>clara e acessível</strong> (não pode ser apenas jargão médico), detalhando: diagnóstico, prognóstico, procedimento proposto, riscos, benefícios, alternativas e o que acontece se o paciente recusar. Deve ser assinado após tempo razoável para leitura e dúvidas. Anexar cópia ao prontuário.", base: "Art. 10" },
+  { tipo: "polemica", pergunta: "Paciente agressivo pode ser contido? Isso viola a lei?", resposta: "A contenção física ou química é <strong>medida excepcional</strong>, admitida apenas quando há risco iminente ao próprio paciente ou a terceiros, por tempo mínimo necessário, com prescrição médica, monitorização e registro detalhado. Contenção como punição ou rotina viola o Estatuto e pode caracterizar tortura.", base: "Art. 9º + legislação de saúde mental" },
+  { tipo: "frequente", pergunta: "Quem fiscaliza o cumprimento do Estatuto?", resposta: "O <strong>poder público</strong> (Ministério da Saúde, vigilâncias sanitárias, ANS para planos de saúde), somado aos conselhos profissionais, Ministério Público, Defensorias, Procons e ao Conselho de Defesa dos Direitos da Pessoa Humana. Pacientes também podem buscar diretamente a via judicial.", base: "Mecanismos de cumprimento" },
+  { tipo: "polemica", pergunta: "Diretivas antecipadas de vontade obrigam o hospital?", resposta: "Sim, desde que compatíveis com a lei e com a ética médica. O hospital deve <strong>guardar cópia</strong> quando apresentadas e respeitar a vontade do paciente sobre tratamentos em caso de incapacidade futura. Ignorar diretivas válidas expõe a instituição à responsabilização.", base: "Deveres do paciente + Art. 10" }
 ];
 
 const perguntasQuiz = [
-  { pergunta: "Um paciente pode exigir acesso ao seu prontuario sem apresentar justificativa?", opcoes: ["Sim, a qualquer momento e gratuitamente", "Nao, precisa justificar o pedido", "Apenas com autorizacao judicial", "Apenas mediante pagamento de taxa"], correta: 0, explicacao: "O Art. 7 garante acesso ao prontuario sem justificativa e com copia gratuita." },
-  { pergunta: "O hospital pode negar a presenca de acompanhante em qualquer situacao?", opcoes: ["Sim, quando quiser", "Nao, e direito absoluto", "Apenas quando o profissional avaliar prejuizo a saude, intimidade ou seguranca", "Somente em UTIs"], correta: 2, explicacao: "A negativa so e valida em casos especificos avaliados pelo profissional responsavel." },
-  { pergunta: "Violacoes ao Estatuto podem ser enquadradas como violacao a direitos humanos?", opcoes: ["Nao, e apenas civel", "Sim, nos termos da Lei 12.986/2014", "Apenas em hospitais publicos", "Somente se houver morte"], correta: 1, explicacao: "O Estatuto remete expressamente a Lei 12.986/2014 sobre direitos humanos." },
-  { pergunta: "O paciente pode retirar o consentimento informado depois de dado?", opcoes: ["Nao, e irrevogavel", "Sim, a qualquer tempo e sem represalias", "Apenas antes do procedimento", "Somente com autorizacao do medico"], correta: 1, explicacao: "O consentimento pode ser retirado a qualquer tempo, sem qualquer represalia." },
-  { pergunta: "A confidencialidade dos dados do paciente vigora:", opcoes: ["Apenas durante o tratamento", "Ate a alta hospitalar", "Mesmo apos a morte do paciente", "Apenas enquanto vivo"], correta: 2, explicacao: "A confidencialidade persiste inclusive apos a morte, salvo excecoes legais." },
-  { pergunta: "A lei se aplica a:", opcoes: ["Apenas hospitais publicos", "Apenas rede privada", "Hospitais, clinicas, laboratorios, ambulatorios e planos de saude — publicos e privados", "Apenas o SUS"], correta: 2, explicacao: "O Estatuto alcanca todos os servicos de saude, publicos e privados." },
-  { pergunta: "O paciente pode indicar um representante:", opcoes: ["Apenas no momento da internacao", "Somente se incapaz", "A qualquer momento, registrado no prontuario", "Apenas por procuracao cartorial"], correta: 2, explicacao: "A indicacao e livre, a qualquer tempo, mediante registro no prontuario." },
-  { pergunta: "Sobre seguranca, o paciente tem direito a perguntar sobre:", opcoes: ["Apenas o diagnostico", "Higienizacao das maos, local do procedimento e identidade do medico", "Apenas o preco", "Nada — deve confiar na equipe"], correta: 1, explicacao: "O Art. 9 assegura o direito de perguntar sobre todos esses aspectos de seguranca." }
+  { pergunta: "Um paciente pode exigir acesso ao seu prontuário sem apresentar justificativa?", opcoes: ["Sim, a qualquer momento e gratuitamente", "Não, precisa justificar o pedido", "Apenas com autorização judicial", "Apenas mediante pagamento de taxa"], correta: 0, explicacao: "O Art. 7º garante acesso ao prontuário sem justificativa e com cópia gratuita." },
+  { pergunta: "O hospital pode negar a presença de acompanhante em qualquer situação?", opcoes: ["Sim, quando quiser", "Não, é direito absoluto", "Apenas quando o profissional avaliar prejuízo à saúde, intimidade ou segurança", "Somente em UTIs"], correta: 2, explicacao: "A negativa só é válida em casos específicos avaliados pelo profissional responsável." },
+  { pergunta: "Violações ao Estatuto podem ser enquadradas como violação a direitos humanos?", opcoes: ["Não, é apenas cível", "Sim, nos termos da Lei 12.986/2014", "Apenas em hospitais públicos", "Somente se houver morte"], correta: 1, explicacao: "O Estatuto remete expressamente à Lei 12.986/2014 sobre direitos humanos." },
+  { pergunta: "O paciente pode retirar o consentimento informado depois de dado?", opcoes: ["Não, é irrevogável", "Sim, a qualquer tempo e sem represálias", "Apenas antes do procedimento", "Somente com autorização do médico"], correta: 1, explicacao: "O consentimento pode ser retirado a qualquer tempo, sem qualquer represália." },
+  { pergunta: "A confidencialidade dos dados do paciente vigora:", opcoes: ["Apenas durante o tratamento", "Até a alta hospitalar", "Mesmo após a morte do paciente", "Apenas enquanto vivo"], correta: 2, explicacao: "A confidencialidade persiste inclusive após a morte, salvo exceções legais." },
+  { pergunta: "A lei se aplica a:", opcoes: ["Apenas hospitais públicos", "Apenas rede privada", "Hospitais, clínicas, laboratórios, ambulatórios e planos de saúde — públicos e privados", "Apenas o SUS"], correta: 2, explicacao: "O Estatuto alcança todos os serviços de saúde, públicos e privados." },
+  { pergunta: "O paciente pode indicar um representante:", opcoes: ["Apenas no momento da internação", "Somente se incapaz", "A qualquer momento, registrado no prontuário", "Apenas por procuração em cartório"], correta: 2, explicacao: "A indicação é livre, a qualquer tempo, mediante registro no prontuário." },
+  { pergunta: "Sobre segurança, o paciente tem direito a perguntar sobre:", opcoes: ["Apenas o diagnóstico", "Higienização das mãos, local do procedimento e identidade do médico", "Apenas o preço", "Nada — deve confiar na equipe"], correta: 1, explicacao: "O Art. 9º assegura o direito de perguntar sobre todos esses aspectos de segurança." }
 ];
 
 const checklistItens = [
-  "Protocolo documentado para acesso gratuito ao prontuario",
-  "Politica clara sobre permanencia de acompanhantes",
-  "Canal de reclamacao disponivel e divulgado aos pacientes",
+  "Protocolo documentado para acesso gratuito ao prontuário",
+  "Política clara sobre permanência de acompanhantes",
+  "Canal de reclamação disponível e divulgado aos pacientes",
   "Equipe treinada sobre os direitos do paciente",
-  "Politica de confidencialidade de dados implementada e auditada",
+  "Política de confidencialidade de dados implementada e auditada",
   "Modelos de termo de consentimento informado atualizados",
-  "Cartazes ou sinalizacao sobre direitos do paciente afixados nas unidades",
-  "Protocolo de seguranca assistencial (higienizacao, identificacao, time-out cirurgico)",
-  "Procedimento para registro de representante do paciente no prontuario",
+  "Cartazes ou sinalização sobre direitos do paciente afixados nas unidades",
+  "Protocolo de segurança assistencial (higienização, identificação, time-out cirúrgico)",
+  "Procedimento para registro de representante do paciente no prontuário",
   "Processo de acolhimento de diretivas antecipadas de vontade",
-  "Capacitacao continua dos profissionais sobre a Lei 15.378/2026",
-  "Registro e cooperacao com pesquisas bienais de qualidade"
+  "Capacitação contínua dos profissionais sobre a Lei 15.378/2026",
+  "Registro e cooperação com pesquisas bienais de qualidade"
 ];
 
-// ============ RENDERIZACAO ============
+// ============ RENDERIZAÇÃO ============
 const cardsDireitos = document.getElementById("cards-direitos");
 direitos.forEach(d => {
   const el = document.createElement("div");
@@ -363,7 +358,7 @@ function renderFaq(filtro) {
   itens.forEach(f => {
     const el = document.createElement("div");
     el.className = "faq-item";
-    const tagLabel = f.tipo === "polemica" ? "Polemica" : "Frequente";
+    const tagLabel = f.tipo === "polemica" ? "Polêmica" : "Frequente";
     el.innerHTML = '<div class="faq-pergunta"><span class="faq-tag ' + f.tipo + '">' + tagLabel + '</span><span>' + f.pergunta + '</span><span class="faq-seta">&#8964;</span></div><div class="faq-resposta"><p>' + f.resposta + '</p><div class="base">' + f.base + '</div></div>';
     el.querySelector(".faq-pergunta").addEventListener("click", () => el.classList.toggle("aberto"));
     listaFaq.appendChild(el);
@@ -385,7 +380,7 @@ const barraProgresso = document.getElementById("barra-progresso");
 
 function renderPergunta() {
   if (perguntaAtual >= perguntasQuiz.length) {
-    quizContainer.innerHTML = '<div class="resultado-quiz"><div class="pontos">' + pontos + '/' + perguntasQuiz.length + '</div><p style="margin:12px 0;">' + (pontos === perguntasQuiz.length ? "Excelente! Voce domina o Estatuto." : pontos >= 6 ? "Muito bom! Continue estudando." : "Vale revisar os conteudos acima.") + '</p><button class="btn" onclick="reiniciarQuiz()">Refazer Quiz</button></div>';
+    quizContainer.innerHTML = '<div class="resultado-quiz"><div class="pontos">' + pontos + '/' + perguntasQuiz.length + '</div><p style="margin:12px 0;">' + (pontos === perguntasQuiz.length ? "Excelente! Você domina o Estatuto." : pontos >= 6 ? "Muito bom! Continue estudando." : "Vale revisar os conteúdos acima.") + '</p><button class="btn" onclick="reiniciarQuiz()">Refazer Quiz</button></div>';
     barraProgresso.style.width = "100%";
     return;
   }
@@ -393,7 +388,7 @@ function renderPergunta() {
   barraProgresso.style.width = (perguntaAtual / perguntasQuiz.length * 100) + "%";
   let html = '<div class="quiz-pergunta">' + (perguntaAtual + 1) + '. ' + p.pergunta + '</div>';
   p.opcoes.forEach((op, i) => { html += '<div class="quiz-opcao" onclick="responder(' + i + ')">' + op + '</div>'; });
-  html += '<div class="quiz-feedback" id="feedback"></div><button class="btn" id="btn-proximo" style="display:none;" onclick="proxima()">Proxima</button>';
+  html += '<div class="quiz-feedback" id="feedback"></div><button class="btn" id="btn-proximo" style="display:none;" onclick="proxima()">Próxima</button>';
   quizContainer.innerHTML = html;
 }
 
@@ -428,7 +423,7 @@ function atualizarChecklist() {
   checks.forEach(c => { estado[c.dataset.idx] = c.checked; if (c.checked) concluidos++; c.closest(".checklist-item").classList.toggle("concluido", c.checked); });
   localStorage.setItem("checklist-15378", JSON.stringify(estado));
   const pct = Math.round(concluidos / checks.length * 100);
-  document.getElementById("check-texto").textContent = concluidos + " de " + checks.length + " itens concluidos";
+  document.getElementById("check-texto").textContent = concluidos + " de " + checks.length + " itens concluídos";
   document.getElementById("check-porcentagem").textContent = pct + "%";
   document.getElementById("check-barra").style.width = pct + "%";
 }
@@ -447,42 +442,41 @@ function geminiUrl(model) {
   return "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + GEMINI_KEY;
 }
 
-const SYSTEM_PROMPT = `Voce e um consultor juridico virtual especializado na Lei 15.378/2026, o Estatuto dos Direitos do Paciente do Brasil. Seu papel e ajudar gestores de hospitais, clinicas e servicos de saude a analisar situacoes reais do dia a dia e verificar se estao em conformidade com o espirito e a letra da lei.
+const SYSTEM_PROMPT = `Você é um consultor jurídico virtual especializado na Lei 15.378/2026, o Estatuto dos Direitos do Paciente do Brasil. Seu papel é ajudar gestores de hospitais, clínicas e serviços de saúde a analisar situações reais do dia a dia e verificar se estão em conformidade com o espírito e a letra da lei.
 
-Ao receber uma situacao, voce deve:
-1. Analisar a situacao sob a otica da Lei 15.378/2026
-2. Indicar quais artigos da lei sao relevantes
-3. Dizer claramente se o hospital esta OU NAO em conformidade
-4. Dar orientacao pratica sobre o que fazer
-5. Alertar sobre riscos juridicos se houver descumprimento
+Ao receber uma situação, você deve:
+1. Analisar a situação sob a ótica da Lei 15.378/2026
+2. Indicar quais artigos da lei são relevantes
+3. Dizer claramente se o hospital está OU NÃO em conformidade
+4. Dar orientação prática sobre o que fazer
+5. Alertar sobre riscos jurídicos se houver descumprimento
 
 Artigos principais da lei:
-- Art. 3: Submete profissionais de saude, servicos de saude publicos/privados e operadoras de planos de saude
-- Art. 4: Direito a cuidados de qualidade, no tempo oportuno, em instalacoes limpas e adequadas
-- Art. 6: Direito a acompanhante em consultas e internacoes (salvo prejuizo avaliado pelo profissional)
-- Art. 7: Acesso ao prontuario sem justificativa, copia gratuita, retificacao, guarda segura
-- Art. 8: Direito a indicar representante, registrado no prontuario
-- Art. 9: Seguranca assistencial — ambiente, procedimentos e insumos seguros. Direito de perguntar sobre higienizacao, local de procedimento, identidade do medico
-- Art. 10: Consentimento informado livre de coercao, com direito a retirada a qualquer tempo sem represalias
-- Art. 11: Confidencialidade das informacoes de saude inclusive apos a morte
-- Violacoes sao classificadas como contrarias aos direitos humanos (Lei 12.986/2014)
+- Art. 3º: Submete profissionais de saúde, serviços de saúde públicos/privados e operadoras de planos de saúde
+- Art. 4º: Direito a cuidados de qualidade, no tempo oportuno, em instalações limpas e adequadas
+- Art. 6º: Direito a acompanhante em consultas e internações (salvo prejuízo avaliado pelo profissional)
+- Art. 7º: Acesso ao prontuário sem justificativa, cópia gratuita, retificação, guarda segura
+- Art. 8º: Direito a indicar representante, registrado no prontuário
+- Art. 9º: Segurança assistencial — ambiente, procedimentos e insumos seguros. Direito de perguntar sobre higienização, local de procedimento, identidade do médico
+- Art. 10: Consentimento informado livre de coerção, com direito a retirada a qualquer tempo sem represálias
+- Art. 11: Confidencialidade das informações de saúde inclusive após a morte
+- Violações são classificadas como contrárias aos direitos humanos (Lei 12.986/2014)
 
 Regras:
-- Responda SEMPRE em portugues do Brasil
-- Seja direto, pratico e objetivo
-- Use linguagem acessivel (nao excesso de juridiques)
-- Quando relevante, cite o artigo especifico
-- Inclua um breve veredito: CONFORME, NAO CONFORME, ou PARCIALMENTE CONFORME
-- Nao invente artigos que nao existam na lei
-- Se a situacao envolver temas fora da lei (ex: questao criminal pura), oriente a buscar advogado especializado
-- Mantenha respostas focadas e com no maximo 300 palavras`;
+- Responda SEMPRE em português do Brasil
+- Seja direto, prático e objetivo
+- Use linguagem acessível (sem excesso de juridiquês)
+- Quando relevante, cite o artigo específico
+- Inclua um breve veredito: CONFORME, NÃO CONFORME, ou PARCIALMENTE CONFORME
+- Não invente artigos que não existam na lei
+- Se a situação envolver temas fora da lei (ex: questão criminal pura), oriente a buscar advogado especializado
+- Mantenha respostas focadas e com no máximo 300 palavras`;
 
 let chatHistorico = [];
 const chatMensagens = document.getElementById("chat-mensagens");
 const chatInput = document.getElementById("chat-input");
 const chatEnviar = document.getElementById("chat-enviar");
 
-// Auto-resize textarea
 chatInput.addEventListener("input", function() {
   this.style.height = "auto";
   this.style.height = Math.min(this.scrollHeight, 120) + "px";
@@ -492,7 +486,6 @@ chatInput.addEventListener("keydown", function(e) {
   if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); enviarMensagem(); }
 });
 
-// Sugestoes clicaveis
 document.querySelectorAll(".chat-sugestao").forEach(s => {
   s.addEventListener("click", () => {
     chatInput.value = s.textContent;
@@ -525,9 +518,7 @@ function removeTyping() {
 }
 
 function formatResponse(text) {
-  // Bold
   text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-  // Line breaks
   text = text.replace(/\n/g, '<br>');
   return text;
 }
@@ -540,7 +531,6 @@ async function enviarMensagem() {
   chatInput.style.height = "auto";
   chatEnviar.disabled = true;
 
-  // Esconde sugestoes
   document.getElementById("chat-sugestoes").style.display = "none";
 
   addMsg(texto, "usuario");
