@@ -542,7 +542,7 @@ async function enviarMensagem() {
     const body = {
       system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
       contents: chatHistorico,
-      generationConfig: { temperature: 0.4, maxOutputTokens: 1024, thinkingConfig: { thinkingBudget: 0 } }
+      generationConfig: { temperature: 0.4, maxOutputTokens: 1024 }
     };
 
     let resposta = null;
@@ -572,7 +572,7 @@ async function enviarMensagem() {
     }
 
     if (!resposta) {
-      throw new Error("Cota da API esgotada. Aguarde alguns minutos e tente novamente, ou ative o faturamento no Google AI Studio (ai.google.dev).");
+      throw new Error(lastErr || "Nenhum modelo disponível. Tente novamente em alguns minutos.");
     }
 
     chatHistorico.push({ role: "model", parts: [{ text: resposta }] });
