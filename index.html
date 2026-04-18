@@ -431,12 +431,10 @@ listaCheck.addEventListener("change", atualizarChecklist);
 atualizarChecklist();
 function limparChecklist() { localStorage.removeItem("checklist-15378"); document.querySelectorAll("#lista-checklist input").forEach(c => c.checked = false); atualizarChecklist(); }
 
-// ============ CHAT IA ============
+// ============ CHAT IA (GEMINI + FALLBACK OFFLINE) ============
 const GEMINI_KEY = "AIzaSyDjZTEI9K20IHDz9VSVET0XnK8ho5GF2do";
 const GEMINI_MODELS = [
   "gemini-2.5-flash-lite",
-  "gemini-3.1-flash-lite-preview",
-  "gemini-3-flash-preview",
   "gemini-2.5-flash",
   "gemini-2.0-flash"
 ];
@@ -474,7 +472,41 @@ Regras:
 - Se a situação envolver temas fora da lei (ex: questão criminal pura), oriente a buscar advogado especializado
 - Mantenha respostas focadas e com no máximo 300 palavras`;
 
+// Base de conhecimento offline para fallback
+const baseConhecimento = [
+  { palavras: ["filmar", "gravar", "gravação", "vídeo", "filmagem", "celular", "câmera"], resposta: "<strong>Veredito: PARCIALMENTE CONFORME (depende do contexto)</strong><br><br>O Estatuto dos Direitos do Paciente (Lei 15.378/2026) não trata expressamente de filmagens. No entanto, o <strong>Art. 9º</strong> garante ao paciente o direito de fazer perguntas e verificar procedimentos de segurança, e o <strong>Art. 10</strong> assegura o direito à informação.<br><br>A gravação pela própria pessoa envolvida na conversa é juridicamente válida no Brasil (conforme jurisprudência do STJ). O hospital <strong>não deve proibir</strong> que o paciente grave seu próprio atendimento.<br><br><strong>Orientação prática:</strong><br>• Não proíba a gravação pelo paciente<br>• Registre no prontuário que houve gravação<br>• Assegure que informações de terceiros não sejam expostas<br>• Resguarde a privacidade de outros pacientes (Art. 11)" },
+  { palavras: ["diagnóstico", "ocultar", "esconder", "família", "conspiração", "silêncio", "não contar", "omitir"], resposta: "<strong>Veredito: NÃO CONFORME</strong><br><br>Segundo o <strong>Art. 10</strong> da Lei 15.378/2026, o paciente tem direito ao <strong>consentimento informado</strong>, que pressupõe acesso completo às informações sobre seu diagnóstico, prognóstico e tratamento. O <strong>Art. 11</strong> estabelece que a titularidade das informações é do paciente, não da família.<br><br>A chamada \"conspiração do silêncio\" — quando familiares pedem para ocultar um diagnóstico grave — <strong>viola frontalmente o Estatuto</strong>.<br><br><strong>Orientação prática:</strong><br>• Acolha a preocupação dos familiares com empatia<br>• Explique que a lei garante o direito do paciente à verdade<br>• Comunique o diagnóstico de forma humanizada e gradual<br>• Envolva equipe multiprofissional (psicologia, serviço social)<br>• Documente tudo no prontuário" },
+  { palavras: ["acompanhante", "visita", "UTI", "centro cirúrgico", "recusar", "negar", "proibir", "sair"], resposta: "<strong>Veredito: PARCIALMENTE CONFORME (depende da justificativa)</strong><br><br>O <strong>Art. 6º</strong> da Lei 15.378/2026 garante ao paciente o direito a <strong>acompanhante em consultas e internações</strong>. A presença só pode ser negada quando o profissional responsável avaliar, de forma técnica e documentada, que causa <strong>prejuízo à saúde, intimidade ou segurança</strong> do paciente ou de terceiros.<br><br>Negativas genéricas como \"regra da UTI\" ou \"política do hospital\" <strong>não são mais suficientes</strong>.<br><br><strong>Orientação prática:</strong><br>• Crie protocolo escrito sobre acompanhantes<br>• Cada recusa deve ter justificativa técnica individual<br>• Registre a justificativa no prontuário<br>• Lembre: o acompanhante tem direito de fazer perguntas sobre segurança" },
+  { palavras: ["prontuário", "cópia", "acesso", "documento", "registro", "cobrar"], resposta: "<strong>Veredito: O paciente tem direito total ao prontuário</strong><br><br>O <strong>Art. 7º</strong> da Lei 15.378/2026 é claro: o paciente tem direito de <strong>acessar seu prontuário a qualquer momento</strong>, sem necessidade de apresentar justificativa, com direito a <strong>cópia gratuita</strong>, retificação e exigência de guarda segura.<br><br><strong>Se o hospital cobra</strong> pela cópia ou exige justificativa, está <strong>NÃO CONFORME</strong>.<br><br><strong>Orientação prática:</strong><br>• Disponibilize o prontuário mediante simples solicitação<br>• Não cobre taxa de reprodução<br>• Não exija motivo para o acesso<br>• Forneça em prazo razoável (recomenda-se até 48h)<br>• Mantenha o prontuário em guarda segura e confidencial" },
+  { palavras: ["consentimento", "recusa", "tratamento", "não quer", "recusar", "negar tratamento", "alta a pedido"], resposta: "<strong>Veredito: O paciente tem direito de recusar tratamento</strong><br><br>O <strong>Art. 10</strong> da Lei 15.378/2026 garante o <strong>consentimento informado livre de coerção</strong>. O paciente pode retirar o consentimento <strong>a qualquer tempo, sem represálias</strong>, mesmo quando o tratamento é vital.<br><br>Exceção: em emergência com paciente inconsciente, o consentimento é presumido.<br><br><strong>Orientação prática:</strong><br>• Informe detalhadamente as consequências da recusa<br>• Documente a recusa em termo específico assinado<br>• Respeite a autonomia do paciente<br>• Nunca force tratamento em paciente capaz e consciente<br>• Se houver dúvida sobre capacidade mental, acione equipe multiprofissional" },
+  { palavras: ["confidencial", "sigilo", "informação", "familiar", "telefone", "ligar", "terceiro", "privacidade", "dados"], resposta: "<strong>Veredito: Informações só com consentimento do paciente</strong><br><br>O <strong>Art. 11</strong> da Lei 15.378/2026 garante a <strong>confidencialidade</strong> das informações sobre saúde e dados pessoais, <strong>inclusive após a morte</strong>, salvo exceções legais.<br><br>Repassar informações a familiares, cônjuge ou qualquer terceiro <strong>sem consentimento prévio do paciente</strong> é <strong>NÃO CONFORME</strong>.<br><br><strong>Orientação prática:</strong><br>• Pergunte ao paciente quem pode receber informações<br>• Registre a autorização (ou negativa) no prontuário<br>• Se alguém ligar pedindo informações, confirme se há autorização<br>• Mesmo cônjuge e pais precisam de autorização<br>• Dados e registros devem ser arquivados de forma segura" },
+  { palavras: ["representante", "indicar", "procuração", "responsável", "decisão"], resposta: "<strong>Veredito: Direito garantido pelo Art. 8º</strong><br><br>O <strong>Art. 8º</strong> da Lei 15.378/2026 garante ao paciente o direito de <strong>indicar livremente um representante</strong> em qualquer momento dos cuidados em saúde, mediante registro no prontuário.<br><br>Não é necessário procuração em cartório — basta o registro em prontuário.<br><br><strong>Orientação prática:</strong><br>• Ofereça ao paciente a possibilidade de indicar representante<br>• Registre a indicação no prontuário<br>• O representante pode ser alterado a qualquer momento<br>• Respeite as decisões comunicadas pelo representante quando o paciente não puder se manifestar" },
+  { palavras: ["contenção", "agressivo", "contido", "amarrar", "sedar", "sedação", "imobilizar"], resposta: "<strong>Veredito: Contenção só como medida excepcional</strong><br><br>O <strong>Art. 9º</strong> da Lei 15.378/2026, combinado com a legislação de saúde mental, estabelece que a contenção física ou química é <strong>medida excepcional</strong>.<br><br>Contenção como rotina ou punição é <strong>NÃO CONFORME</strong> e pode caracterizar tortura.<br><br><strong>Orientação prática:</strong><br>• Só contenha quando há risco iminente ao paciente ou terceiros<br>• Sempre com prescrição médica documentada<br>• Pelo tempo mínimo necessário<br>• Com monitorização contínua<br>• Registro detalhado no prontuário (hora início/fim, motivo, reavaliações)<br>• Nunca como punição disciplinar" },
+  { palavras: ["transfusão", "Jeová", "testemunha", "religião", "religiosa", "sangue"], resposta: "<strong>Veredito: Adulto capaz pode recusar — CONFORME</strong><br><br>Com base no <strong>Art. 10</strong> da Lei 15.378/2026 e na jurisprudência do STF, adulto capaz pode recusar transfusão de sangue por convicção religiosa, mesmo com risco de morte.<br><br><strong>Em menores ou incapazes</strong>, prevalece o dever de proteção à vida.<br><br><strong>Orientação prática:</strong><br>• Documente exaustivamente a recusa e os esclarecimentos prestados<br>• Ofereça alternativas terapêuticas<br>• Respeite a decisão de adulto capaz<br>• Em menores: acione o Judiciário quando houver tempo<br>• Em emergência com menor: aja para preservar a vida" },
+  { palavras: ["diretiva", "antecipada", "vontade", "testamento vital"], resposta: "<strong>Veredito: Hospital deve respeitar diretivas válidas</strong><br><br>O Estatuto dos Direitos do Paciente, em conjunto com o <strong>Art. 10</strong>, reconhece as diretivas antecipadas de vontade. O hospital deve <strong>guardar cópia</strong> quando apresentadas.<br><br>Ignorar diretivas válidas expõe a instituição à <strong>responsabilização</strong>.<br><br><strong>Orientação prática:</strong><br>• Pergunte ao paciente se possui diretivas antecipadas<br>• Guarde cópia junto ao prontuário<br>• Respeite as instruções em caso de incapacidade futura<br>• As diretivas devem ser compatíveis com a lei e a ética médica<br>• Na dúvida, consulte a comissão de ética do hospital" },
+  { palavras: ["cartaz", "sinalização", "divulgar", "informar", "mural", "aviso"], resposta: "<strong>Veredito: Hospital deve divulgar os direitos</strong><br><br>A Lei 15.378/2026 determina que cabe ao poder público assegurar a <strong>divulgação ampla e periódica</strong> dos direitos, e os hospitais devem cooperar ativamente.<br><br>Não ter sinalização visível é <strong>NÃO CONFORME</strong>.<br><br><strong>Orientação prática:</strong><br>• Afixe cartazes sobre direitos do paciente em recepções, enfermarias e salas de espera<br>• Disponibilize material impresso (folhetos, cartilhas)<br>• Treine a equipe para informar os pacientes sobre seus direitos<br>• Mantenha canal de reclamação visível e acessível" },
+  { palavras: ["fiscalização", "fiscalizar", "denúncia", "reclamação", "punição", "multa", "penalidade"], resposta: "<strong>Veredito: Violações são graves</strong><br><br>A Lei 15.378/2026 classifica violações como situações <strong>contrárias aos direitos humanos</strong> (Lei 12.986/2014). A fiscalização é feita pelo <strong>Ministério da Saúde, vigilâncias sanitárias, ANS, conselhos profissionais, Ministério Público, Defensorias e Procons</strong>.<br><br><strong>Consequências possíveis:</strong><br>• Responsabilização cível (indenizações)<br>• Responsabilização administrativa<br>• Denúncias ao Conselho de Defesa dos Direitos da Pessoa Humana<br>• Descredenciamento de redes e planos<br>• Risco reputacional<br>• Sanções criminais quando aplicável" },
+  { palavras: ["segurança", "higienização", "higiene", "mãos", "cirurgia", "procedimento", "identificação", "médico"], resposta: "<strong>Veredito: Direito fundamental do paciente</strong><br><br>O <strong>Art. 9º</strong> da Lei 15.378/2026 garante ao paciente o direito a <strong>ambiente, procedimentos e insumos seguros</strong>. O paciente pode perguntar aos profissionais sobre:<br><br>• Higienização das mãos e instrumentos<br>• Local correto do corpo para procedimento cirúrgico<br>• Nome do médico responsável e forma de contatá-lo<br><br><strong>Orientação prática:</strong><br>• Incentive o paciente a fazer perguntas sobre segurança<br>• Adote protocolos visíveis (checklist cirúrgico, pulseira de identificação)<br>• Nunca trate perguntas do paciente como inconvenientes<br>• O acompanhante também pode perguntar sobre segurança (Art. 6º)" }
+];
+
+function buscarRespostaOffline(texto) {
+  const textoLower = texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  let melhorMatch = null;
+  let melhorScore = 0;
+  baseConhecimento.forEach(item => {
+    let score = 0;
+    item.palavras.forEach(p => {
+      const pNorm = p.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      if (textoLower.includes(pNorm)) score += 2;
+    });
+    if (score > melhorScore) { melhorScore = score; melhorMatch = item; }
+  });
+  if (melhorMatch && melhorScore >= 2) return melhorMatch.resposta;
+  return "<strong>Não encontrei uma orientação específica</strong> para essa situação na minha base de conhecimento offline.<br><br>Sugestões:<br>• Tente reformular com palavras-chave como: prontuário, acompanhante, consentimento, confidencialidade, segurança, contenção, etc.<br>• Consulte as seções de <strong>FAQ &amp; Polêmicas</strong> acima para casos detalhados.<br>• Para análises complexas, recomenda-se consultar um advogado especializado em direito da saúde.";
+}
+
 let chatHistorico = [];
+let modoOffline = false;
 const chatMensagens = document.getElementById("chat-mensagens");
 const chatInput = document.getElementById("chat-input");
 const chatEnviar = document.getElementById("chat-enviar");
@@ -538,6 +570,16 @@ async function enviarMensagem() {
   addMsg(texto, "usuario");
   addTyping();
 
+  // Se já falhou antes, vai direto para offline
+  if (modoOffline) {
+    await new Promise(r => setTimeout(r, 500));
+    removeTyping();
+    addMsg(buscarRespostaOffline(texto), "ia");
+    chatEnviar.disabled = false;
+    chatInput.focus();
+    return;
+  }
+
   chatHistorico.push({ role: "user", parts: [{ text: texto }] });
 
   try {
@@ -574,7 +616,15 @@ async function enviarMensagem() {
     }
 
     if (!resposta) {
-      throw new Error(lastErr || "Nenhum modelo disponível. Tente novamente em alguns minutos.");
+      // Ativa modo offline permanente e usa base local
+      modoOffline = true;
+      removeTyping();
+      addMsg("A IA online está indisponível. Ativando <strong>consultor offline</strong> com base na Lei 15.378/2026.", "sistema");
+      await new Promise(r => setTimeout(r, 300));
+      addMsg(buscarRespostaOffline(texto), "ia");
+      chatEnviar.disabled = false;
+      chatInput.focus();
+      return;
     }
 
     chatHistorico.push({ role: "model", parts: [{ text: resposta }] });
@@ -583,8 +633,11 @@ async function enviarMensagem() {
     addMsg(formatResponse(resposta), "ia");
 
   } catch (err) {
+    modoOffline = true;
     removeTyping();
-    addMsg("<strong>Erro:</strong> " + err.message, "sistema");
+    addMsg("A IA online está indisponível. Ativando <strong>consultor offline</strong> com base na Lei 15.378/2026.", "sistema");
+    await new Promise(r => setTimeout(r, 300));
+    addMsg(buscarRespostaOffline(texto), "ia");
   }
 
   chatEnviar.disabled = false;
