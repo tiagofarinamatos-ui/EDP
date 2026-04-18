@@ -437,11 +437,12 @@ atualizarChecklist();
 function limparChecklist() { localStorage.removeItem("checklist-15378"); document.querySelectorAll("#lista-checklist input").forEach(c => c.checked = false); atualizarChecklist(); }
 
 // ============ CHAT IA ============
-const GEMINI_KEY = "AIzaSyDin2nKpO-SEOCiRW-Smwd7v9hZ97ZqpMs";
+const GEMINI_KEY = "AIzaSyDjZTEI9K20IHDz9VSVET0XnK8ho5GF2do";
 const GEMINI_MODELS = [
   "gemini-2.5-flash-preview-05-20",
-  "gemini-2.0-flash",
-  "gemini-1.5-flash"
+  "gemini-2.5-flash-preview-04-17",
+  "gemini-2.0-flash-lite",
+  "gemini-2.0-flash"
 ];
 function geminiUrl(model) {
   return "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + GEMINI_KEY;
@@ -568,12 +569,8 @@ async function enviarMensagem() {
 
         if (!res.ok) {
           const errData = await res.json().catch(() => ({}));
-          const msg = errData.error?.message || "";
-          if (msg.includes("quota") || msg.includes("rate") || res.status === 429) {
-            lastErr = msg;
-            continue;
-          }
-          throw new Error(msg || "Erro " + res.status);
+          lastErr = errData.error?.message || "Erro " + res.status;
+          continue;
         }
 
         const data = await res.json();
@@ -586,7 +583,7 @@ async function enviarMensagem() {
     }
 
     if (!resposta) {
-      throw new Error(lastErr || "Todos os modelos estao indisponiveis. Tente novamente em alguns minutos.");
+      throw new Error("Cota da API esgotada. Aguarde alguns minutos e tente novamente, ou ative o faturamento no Google AI Studio (ai.google.dev).");
     }
 
     chatHistorico.push({ role: "model", parts: [{ text: resposta }] });
