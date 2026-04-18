@@ -438,7 +438,14 @@ function limparChecklist() { localStorage.removeItem("checklist-15378"); documen
 
 // ============ CHAT IA ============
 const GEMINI_KEY = "AIzaSyDin2nKpO-SEOCiRW-Smwd7v9hZ97ZqpMs";
-const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + GEMINI_KEY;
+const GEMINI_MODELS = [
+  "gemini-2.5-flash-preview-05-20",
+  "gemini-2.0-flash",
+  "gemini-1.5-flash"
+];
+function geminiUrl(model) {
+  return "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + GEMINI_KEY;
+}
 
 const SYSTEM_PROMPT = `Voce e um consultor juridico virtual especializado na Lei 15.378/2026, o Estatuto dos Direitos do Paciente do Brasil. Seu papel e ajudar gestores de hospitais, clinicas e servicos de saude a analisar situacoes reais do dia a dia e verificar se estao em conformidade com o espirito e a letra da lei.
 
@@ -548,19 +555,39 @@ async function enviarMensagem() {
       generationConfig: { temperature: 0.4, maxOutputTokens: 1024 }
     };
 
-    const res = await fetch(GEMINI_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    });
+    let resposta = null;
+    let lastErr = null;
 
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.error?.message || "Erro " + res.status);
+    for (const model of GEMINI_MODELS) {
+      try {
+        const res = await fetch(geminiUrl(model), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          const msg = errData.error?.message || "";
+          if (msg.includes("quota") || msg.includes("rate") || res.status === 429) {
+            lastErr = msg;
+            continue;
+          }
+          throw new Error(msg || "Erro " + res.status);
+        }
+
+        const data = await res.json();
+        resposta = data.candidates?.[0]?.content?.parts?.[0]?.text || null;
+        if (resposta) break;
+      } catch (modelErr) {
+        lastErr = modelErr.message;
+        continue;
+      }
     }
 
-    const data = await res.json();
-    const resposta = data.candidates?.[0]?.content?.parts?.[0]?.text || "Desculpe, nao consegui gerar uma resposta.";
+    if (!resposta) {
+      throw new Error(lastErr || "Todos os modelos estao indisponiveis. Tente novamente em alguns minutos.");
+    }
 
     chatHistorico.push({ role: "model", parts: [{ text: resposta }] });
 
@@ -569,7 +596,7 @@ async function enviarMensagem() {
 
   } catch (err) {
     removeTyping();
-    addMsg("<strong>Erro:</strong> " + err.message + ". Verifique sua conexao e tente novamente.", "sistema");
+    addMsg("<strong>Erro:</strong> " + err.message, "sistema");
   }
 
   chatEnviar.disabled = false;
