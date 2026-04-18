@@ -439,10 +439,9 @@ function limparChecklist() { localStorage.removeItem("checklist-15378"); documen
 // ============ CHAT IA ============
 const GEMINI_KEY = "AIzaSyDjZTEI9K20IHDz9VSVET0XnK8ho5GF2do";
 const GEMINI_MODELS = [
-  "gemini-2.5-flash-preview-05-20",
-  "gemini-2.5-flash-preview-04-17",
-  "gemini-2.0-flash-lite",
-  "gemini-2.0-flash"
+  "gemini-2.5-flash",
+  "gemini-2.0-flash",
+  "gemini-2.0-flash-lite"
 ];
 function geminiUrl(model) {
   return "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + GEMINI_KEY;
@@ -553,7 +552,7 @@ async function enviarMensagem() {
     const body = {
       system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
       contents: chatHistorico,
-      generationConfig: { temperature: 0.4, maxOutputTokens: 1024 }
+      generationConfig: { temperature: 0.4, maxOutputTokens: 1024, thinkingConfig: { thinkingBudget: 0 } }
     };
 
     let resposta = null;
